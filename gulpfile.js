@@ -1,34 +1,47 @@
 var gulp = require('gulp');
-var jade = require('gulp-jade');
-var less = require('gulp-less');
-var plumber = require('gulp-plumber');
-var prefixer = require('gulp-autoprefixer');
-var coffee = require('gulp-coffee');
+var $ = require('gulp-load-plugins')();
+var browserSync = require('browser-sync');
 
 gulp.task('jade', function(){
   gulp.src('src/*.jade')
-    .pipe(plumber())
-    .pipe(jade())
-    .pipe(gulp.dest('.'));
+    .pipe($.plumber())
+    .pipe($.jade())
+    .pipe(gulp.dest('.'))
+    .pipe(browserSync.reload({stream: true, once: true}))
+    ;
 });
 
-gulp.task('less', function(){
-  gulp.src('src/*.less')
-    .pipe(plumber())
-    .pipe(less())
-    .pipe(prefixer('last 2 version'))
-    .pipe(gulp.dest('dest'));
+gulp.task('stylus', function(){
+  gulp.src('src/*.stylus')
+    .pipe($.plumber())
+    .pipe($.stylus())
+    .pipe($.autoprefixer('last 2 version'))
+    .pipe(gulp.dest('dest'))
+    .pipe(browserSync.reload({stream: true, once: true}))
+    ;
 });
 
 gulp.task('coffee', function(){
   gulp.src('src/*.coffee')
-    .pipe(plumber())
-    .pipe(coffee())
-    .pipe(gulp.dest('dest'));
+    .pipe($.plumber())
+    .pipe($.coffee())
+    .pipe(gulp.dest('dest'))
+    .pipe(browserSync.reload({stream: true, once: true}))
+    ;
 });
 
-gulp.task('default', ['jade', 'less', 'coffee'], function(){
+gulp.task('serve', function(){
+  browserSync.init(null, {
+    server: {baseDir: './'}
+  });
+});
+
+gulp.task('reload', function(){
+  browserSync.reload();
+});
+
+  gulp.task('default', ['serve', 'jade', 'stylus', 'coffee'], function(){
   gulp.watch('src/*.jade', ['jade']);
-  gulp.watch('src/*.less', ['less']);
+  gulp.watch('src/*.stylus', ['stylus']);
   gulp.watch('src/*.coffee', ['coffee']);
 });
