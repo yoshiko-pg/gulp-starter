@@ -3,6 +3,15 @@ html(lang="ja")
   head
     meta(charset="UTF-8")
     title pageTitle
-    link(rel='stylesheet', href='./css/style.css')
+    link(rel='stylesheet', href='./css/main.css')
   body
+    - var i = 0;
+    ul
+      while i < 100
+        li= i++
+
+
+
+
+
     script(src='./js/script.js')
