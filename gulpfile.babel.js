@@ -4,7 +4,7 @@ import plugins from 'gulp-load-plugins';
 const $ = plugins();
 
 gulp.task('html', () => {
-  gulp.src('src/*.jade')
+  gulp.src('src/**/*.jade')
     .pipe($.plumber())
     .pipe($.jade())
     .pipe(gulp.dest('dist'))
@@ -12,7 +12,7 @@ gulp.task('html', () => {
 });
 
 gulp.task('css', () => {
-  gulp.src('src/*.stylus')
+  gulp.src('src/style/**/*.stylus')
     .pipe($.plumber())
     .pipe($.stylus())
     .pipe($.autoprefixer('last 2 version'))
@@ -21,7 +21,7 @@ gulp.task('css', () => {
 });
 
 gulp.task('js', () => {
-  gulp.src('src/*.js')
+  gulp.src('src/script/**/*.js')
     .pipe($.plumber())
     .pipe($.babel())
     .pipe(gulp.dest('dist/js'))
@@ -39,7 +39,7 @@ gulp.task('reload', () => {
 });
 
 gulp.task('default', ['serve', 'html', 'css', 'js'], () => {
-  gulp.watch('src/*.jade', ['html']);
-  gulp.watch('src/*.stylus', ['css']);
-  gulp.watch('src/*.js', ['js']);
+  gulp.watch('src/**/*.jade', ['html']);
+  gulp.watch('src/style/**/*.stylus', ['css']);
+  gulp.watch('src/script/**/*.js', ['js']);
 });
