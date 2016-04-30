@@ -9,5 +9,43 @@ html
 body
   color: #333
   font-size: 1.4rem
-  font-family: "Hiragino Kaku Gothic ProN",  Meiryo,  sans-serif
+  font-family: YuGothic, '游ゴシック', 'Hiragino Kaku Gothic ProN',  Meiryo,  sans-serif
+  text-align: center
+
+.button
+  display: inline-block
+  padding: 10px 30px
+  background: rgba(255, 255, 255, 0.2)
+  border: 1px solid #fff
+  color #fff
+  border-radius: 5px
+
+.header
+.footer
+section
+  padding: 6.0rem
+  p
+    line-height: 1.7
+
+.header
+  background: #fc00ff
+  color: #fff
+  position: relative
+  &::before
+    content: ''
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 0
+    height: 0
+    box-shadow: 0 0 50px 20px #ffcc00,
+                20% 50% 50px 20px #ffcc00,
+                0 0 50px 20px #ffcc00,
+                30% 60% 50px 20px #ffcc00
+  .title
+    font-size: 3.0rem
+    font-weight: normal;
+    margin-bottom: 3.0rem
+
 
