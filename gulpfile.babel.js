@@ -4,9 +4,7 @@ import plugins from 'gulp-load-plugins';
 const $ = plugins();
 
 gulp.task('html', () => {
-  gulp.src('src/**/*.jade')
-    .pipe($.plumber())
-    .pipe($.jade())
+  gulp.src('src/**/*.html')
     .pipe(gulp.dest('dist'))
     .pipe(browserSync.stream());
 });
@@ -43,6 +41,6 @@ gulp.task('serve', () => {
 gulp.task('default', ['serve', 'html', 'css', 'js'], () => {
   gulp.watch('src/style/**/*.styl', ['css']);
   gulp.watch('src/script/**/*.js', ['js']);
-  gulp.watch('src/**/*.jade', ['html'])
+  gulp.watch('src/**/*.html', ['html'])
     .on('change', browserSync.reload);
 });
