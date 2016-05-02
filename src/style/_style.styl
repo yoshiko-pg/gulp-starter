@@ -1,51 +1,90 @@
-@charset "UTF-8";
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
-*, *::before, *::after
-  box-sizing: border-box
+html {
+  font-size: 62.5%;
+}
 
-html
-  font-size: 62.5%
+body {
+  color: #333;
+  font-size: 1.4rem;
+  font-family: YuGothic, '游ゴシック', 'Hiragino Kaku Gothic ProN',  Meiryo,  sans-serif;
+  text-align: center;
+}
 
-body
-  color: #333
-  font-size: 1.4rem
-  font-family: YuGothic, '游ゴシック', 'Hiragino Kaku Gothic ProN',  Meiryo,  sans-serif
-  text-align: center
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
 
-.button
-  display: inline-block
-  padding: 10px 30px
-  background: rgba(255, 255, 255, 0.2)
-  border: 1px solid #fff
-  color #fff
-  border-radius: 5px
+.header {
+  position: relative;
+  padding: 8.0rem 0 11.0rem;
 
-.header
-.footer
-section
-  padding: 6.0rem
-  p
-    line-height: 1.7
+  &::before {
+    content: '';
+    width: 100%;
+    height: 10px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #D2D2D2;
+    mix-blend-mode: color-burn;
+  }
+  .title {
+    font-size: 7.2rem;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 4.0rem;
+  }
+  .subtitle {
+    font-size: 2.0rem;
+    line-height: 1.5;
+    letter-spacing: 3px;
+    color: rgba(#fff, 0.7);
+  }
+  &::after {
+    content: 'v';
+    background-color: #fff;
+    width: 140px;
+    height: 24px;
+    border-radius: 7px 7px 0 0
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -70px;
+    z-index: 1;
+  }
+}
 
-.header
-  background: #fc00ff
-  color: #fff
-  position: relative
-  &::before
-    content: ''
-    display: block
-    position: absolute
-    left: 0
-    top: 0
-    width: 0
-    height: 0
-    box-shadow: 0 0 50px 20px #ffcc00,
-                20% 50% 50px 20px #ffcc00,
-                0 0 50px 20px #ffcc00,
-                30% 60% 50px 20px #ffcc00
-  .title
-    font-size: 3.0rem
-    font-weight: normal;
-    margin-bottom: 3.0rem
+.about {
+  background-color: #fff;
+}
 
 
+.balls {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  opacity: 0.9;
+}
+#ball-1 {
+  ball: tomato 285px -25px -38px 3;
+}
+#ball-2 {
+  ball: blueberry 359px -79px 392px 3;
+}
+#ball-3 {
+  ball: cerise 868px -196px -257px 2;
+}
+#ball-4 {
+  ball: blueberry 384px 685px -87px 3;
+}
+#ball-5 {
+  ball: orange 461px 383px 111px 1;
+}
+#ball-6 {
+  ball: tomato 278px 817px 315px 3;
+}

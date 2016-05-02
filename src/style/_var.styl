@@ -1,0 +1,20 @@
+tomato = #ee3b2c
+blueberry = #6b43a7
+orange = #f9b821
+cerise = #ee1386
+
+.ball {
+  position: absolute
+  border-radius: 50%
+  background-color currentColor
+  box-shadow 0 0 130px 100px currentColor
+}
+
+ball(color, size, left, top, z-index = 0)
+  @extend .ball
+  color: color
+  width: size
+  height: size
+  left: left
+  top: top
+  z-index: -100 + z-index
