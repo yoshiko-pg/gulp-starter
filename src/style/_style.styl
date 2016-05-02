@@ -164,6 +164,7 @@ p {
     }
   }
 }
+
 .one-point {
   @extend .site;
   color: #fff;
@@ -188,6 +189,7 @@ p {
     color: #fff;
   }
 }
+
 .skew-left, .skew-right {
   width: 120%;
   margin-left: -10%;
@@ -209,6 +211,31 @@ p {
 .skew-left + .skew-right,
 .skew-right + .skew-left {
   margin-top: -10.0rem;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+
+  &_avatar {
+    flex: 0 0 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid blueberry;
+    border-radius: 50%;
+    margin-right: 6.0rem;
+
+    img {
+      width: 100%;
+    }
+  }
+  &_title {
+    font-size: 2.4rem;
+    text-align: left;
+  }
+  &_link {
+    text-align: left;
+  }
 }
 
 

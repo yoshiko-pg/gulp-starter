@@ -45,6 +45,7 @@ gulp.task('serve', () => {
 });
 
 gulp.task('default', ['serve', 'html', 'css', 'js', 'img'], () => {
+  gulp.watch('src/img/**/*', ['img']);
   gulp.watch('src/style/**/*.styl', ['css']);
   gulp.watch('src/script/**/*.js', ['js']);
   gulp.watch('src/**/*.html', ['html'])
