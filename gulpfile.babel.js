@@ -26,6 +26,12 @@ gulp.task('js', () => {
     .pipe(browserSync.stream());
 });
 
+gulp.task('img', () => {
+  gulp.src('src/img/*')
+    .pipe(gulp.dest('dist/img'))
+    .pipe(browserSync.stream());
+});
+
 gulp.task('serve', () => {
   browserSync.init({
     logLevel: "debug",
@@ -38,7 +44,7 @@ gulp.task('serve', () => {
   });
 });
 
-gulp.task('default', ['serve', 'html', 'css', 'js'], () => {
+gulp.task('default', ['serve', 'html', 'css', 'js', 'img'], () => {
   gulp.watch('src/style/**/*.styl', ['css']);
   gulp.watch('src/script/**/*.js', ['js']);
   gulp.watch('src/**/*.html', ['html'])

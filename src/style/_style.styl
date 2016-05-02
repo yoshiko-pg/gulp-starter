@@ -4,6 +4,7 @@
 
 html {
   font-size: 62.5%;
+  overflow-x: hidden;
 }
 
 body {
@@ -13,8 +14,51 @@ body {
   text-align: center;
 }
 
+
+/* typography */
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: #4f4f4f;
+  margin: 1.4em auto;
+  text-align: left;
+}
+
+
+/* sections */
+
+// 幅固定用のwrapper
+.girdle {
+  max-width: 900px;
+  margin: auto;
+}
+
+// コンテンツを飾りより上にするためのwrapper
+.tray {
+  position: relative;
+  z-index: 10;
+}
+
+.section {
+  padding: 8.0rem 0
+  background-color: #fff;
+  position: relative;
+
+  & + & {
+    padding-top: 0;
+  }
+
+  // 上のsectionに乗り上げて被さる形にする
+  &.put {
+    @extend .tray;
+    margin-top: -14.0rem;
+    padding-top: 8.0rem;
+  }
 }
 
 .header {
@@ -42,6 +86,7 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.5;
     letter-spacing: 3px;
     color: rgba(#fff, 0.7);
+    text-align: center;
   }
   &::after {
     content: 'v';
@@ -57,10 +102,160 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.about {
-  background-color: #fff;
+.site {
+  color: #fff;
+  padding-top: 8.0rem;
+  padding-bottom: 16.0rem;
+  background-color: rgba(blueberry, 0.5);
+
+  & + & {
+    background-color: #9474C3;
+  }
+  & + & + & {
+    background-color: blueberry;
+  }
+  .girdle {
+    display: flex;
+    align-items: center;
+  }
+  .preview {
+    .mac {
+      position: relative;
+      width: 400px;
+      height: 230px;
+      margin-bottom: 3.0rem;
+      background-image: url('../img/mac.png');
+
+      .display {
+        position: absolute;
+        left: 48px;
+        top: 15px;
+        width: 303px;
+        height: 189px;
+        overflow-y: auto;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+    .ghost {
+      display: inline-block;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 1.0rem 2.0rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+  }
+  .desc {
+    margin-left: 7.5rem;
+
+    .desc_title {
+      font-size: 3.2rem;
+      text-align: left;
+      padding-bottom: 1.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(#fff, 0.5);
+    }
+    .desc_text {
+      color: currentColor;
+      font-size: 1.4rem;
+    }
+  }
+}
+.one-point {
+  @extend .site;
+  color: #fff;
+  background-color: orange;
+
+  &_title {
+    font-size: 3.2rem;
+    padding-bottom: 2.0rem;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 5.0rem;
+      height: 0;
+      border-bottom: 1px solid #fff;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2.5rem;
+    }
+  }
+  &_text {
+    color: #fff;
+  }
+}
+.skew-left, .skew-right {
+  width: 120%;
+  margin-left: -10%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.skew-left {
+  transform: rotate(3deg);
+  > * {
+    transform: rotate(-3deg);
+  }
+}
+.skew-right {
+  transform: rotate(-5deg);
+  > * {
+    transform: rotate(5deg);
+  }
+}
+.skew-left + .skew-right,
+.skew-right + .skew-left {
+  margin-top: -10.0rem;
 }
 
+
+/* parts */
+
+.heading {
+  font-size: 3.2rem;
+  line-height: 1.2;
+  letter-spacing: 0.5rem;
+  color: #de3385;
+  margin-bottom: 7.0rem;
+}
+
+.ribbon {
+  width: 120%;
+  margin-left: -10%;
+  margin-bottom: 2.0rem;
+  height: 4.0rem;
+  line-height: 4.0rem;
+  transform: rotate(-6deg);
+  opacity: 0.7;
+  mix-blend-mode: color-burn;
+  background-color: cerise;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+.list {
+  list-style-type: none;
+  padding-left: 20.0rem;
+
+  > li {
+    @extend p;
+    color: #222;
+    position: relative;
+
+    &::before {
+      content: '';
+      ball: cerise 2px -20px 50%;
+      box-shadow: 0 0 6px 4px currentColor;
+      margin-top: -2px;
+    }
+  }
+}
+
+
+/* decoration */
 
 .balls {
   position: fixed;
@@ -69,6 +264,11 @@ h1, h2, h3, h4, h5, h6 {
   height: 100vh;
   z-index: -1;
   opacity: 0.9;
+}
+.ball {
+  &.big {
+    opacity: 0.25;
+  }
 }
 #ball-1 {
   ball: tomato 285px -25px -38px 3;
@@ -87,4 +287,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 #ball-6 {
   ball: tomato 278px 817px 315px 3;
+}
+#ball-big-1 {
+  ball: tomato 440px -55px 315px 1;
+  top: auto;
+  bottom: -110px;
+}
+#ball-big-2 {
+  ball: orange 560px 424px 315px 2;
+  top: auto;
+  bottom: -180px;
 }
